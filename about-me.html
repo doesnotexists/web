@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Invinites</title>
+    <style>
+        /* Your existing styles here */
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        nav {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover,
+        ul li a.active {
+            color: rgb(61, 61, 58);
+        }
+
+        .contact-info {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        ul li:hover .contact-info {
+            display: block;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .main-content {
+            text-align: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            margin-bottom: 20px;
+            font-size: 3rem;
+        }
+
+        .main-content p {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .main-content a {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .main-content a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Loading Screen Styles */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #loading img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s forwards;
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <div class="background"></div>
+    <nav>
+        <label class="logo">Invinites</label>
+        <ul>
+            <li>
+                <a class="active" href="#Contact">Contact</a>
+                <div class="contact-info">
+                    <p>Email: hello@invinites.site </p>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <h1>About me</h1>
+        <p>A person behind this website is just a student that bored and decided to make a website.</p>
+        <p>Feel free to contact me, click on the right top corner to see my contact lists.</p>
+        <a href="index.html" class="nav-link">Back</a>
+        <div class="text-and-image-container">
+            <img src="./images/wtf.jpg" alt="Description of the image" class="small-image">
+            <div class="text-container">
+                <p>This is me, I took this photo while I'm making the website.</p>
+                <p>The photo is also for Scout.</p>
+                <p>I'm also learning HTML and Js..</p>
+                <p>I'm not a professional so if you need help I cannot really do anything.</p>
+                <img src="./images/logo.png" alt="" class="small-image-2">
+                <div class="text-container-2">
+                    <p>I'm currently on Junior High School</p>
+                    <p>And my school is Al Azhar, specifically SMP Al Azhar 16 Cikarang.</p>
+                    <p>I also still on Grade 8, and I'm 14 years old!</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
+
+        document.querySelectorAll('a.nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+
+                document.body.classList.add('fade-out');
+                setTimeout(function() {
+                    window.location.href = href;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
