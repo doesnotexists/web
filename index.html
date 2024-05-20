@@ -1,9 +1,196 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Hello!</title>
-    </head>
-    <body>
-        <p>This website is in under development.</p>
-    </body>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Invinites</title>
+    <style>
+        /* Your existing styles here */
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        nav {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover,
+        ul li a.active {
+            color: rgb(61, 61, 58);
+        }
+
+        .contact-info {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        ul li:hover .contact-info {
+            display: block;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .main-content a.nav-link {
+        margin-bottom: 10px;
+        }
+
+        .main-content h1 {
+            margin-bottom: 20px;
+            font-size: 3rem;
+        }
+
+        .main-content p {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .main-content a {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .main-content a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Loading Screen Styles */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #loading img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s forwards;
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+    </style>
+</head>
+<body class="fade-in">
+    <!-- Loading Screen -->
+    <div id="loading">
+        <img src="./images/loading.gif" alt="Loading...">
+    </div>
+    <div class="background"></div>
+    <nav>
+        <label class="logo">Invinites</label>
+        <ul>
+            <li>
+                <a class="active" href="#Contact">Contact</a>
+                <div class="contact-info">
+                    <p>Email: hello@invinites.site </p>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <h1>Invinites</h1>
+        <p>Welcome to the website</p>
+        <p>This website is made only for fun, nothing is very important here it just for bio/blog.</p>
+        <a href="learn-more.html" class="nav-link">Learn More</a>
+        <a href="about-me.html" class="nav-link" style="margin-top: 10px;">About Me</a>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
+
+        document.querySelectorAll('a.nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+
+                document.body.classList.add('fade-out');
+                setTimeout(function() {
+                    window.location.href = href;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
 </html>
